@@ -234,7 +234,7 @@ const RegistrationScreen = () => {
                       borderColor: 'rgba(34, 41, 47, 0.4)'
                     }}
                   >
-                    <Text>{moment(value).format('YYYY-MM-DD')}</Text>
+                    <Text>{value && moment(value).format('YYYY-MM-DD')}</Text>
                   </TouchableOpacity>
                   <DateTimePickerModal
                     date={value || new Date()}
@@ -459,9 +459,9 @@ const RegistrationScreen = () => {
             <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Tanggal masuk</Text>
             <Controller
               control={control}
-              rules={{
-                required: true,
-              }}
+              // rules={{
+              //   required: true,
+              // }}
               render={({field: {onChange, onBlur, value}}) => (
                 <>
                   <TouchableOpacity
@@ -471,15 +471,16 @@ const RegistrationScreen = () => {
                     style={{
                       borderWidth: 1,
                       borderRadius: 4,
-                      paddingVertical: 20,
+                      paddingVertical: 10,
                       paddingHorizontal: 10,
                       borderColor: 'rgba(34, 41, 47, 0.4)'
                     }}
 
                   >
-                    <Text>{moment(value).format('YYYY-MM-DD')}</Text>
+                    <Text>{value && moment(value).format('YYYY-MM-DD')}</Text>
                   </TouchableOpacity>
                   <DateTimePickerModal
+                    date={value || new Date()}
                     isVisible={mutationInModal}
                     mode="date"
                     onConfirm={(e) => {
@@ -514,15 +515,16 @@ const RegistrationScreen = () => {
                     style={{
                       borderWidth: 1,
                       borderRadius: 4,
-                      paddingVertical: 20,
+                      paddingVertical: 10,
                       paddingHorizontal: 10,
                       borderColor: 'rgba(34, 41, 47, 0.4)'
                     }}
 
                   >
-                    <Text>{moment(value).format('YYYY-MM-DD')}</Text>
+                    <Text>{value && moment(value).format('YYYY-MM-DD')}</Text>
                   </TouchableOpacity>
                   <DateTimePickerModal
+                    date={value || new Date()}
                     isVisible={mutationOutModal}
                     mode="date"
                     onConfirm={(e) => {

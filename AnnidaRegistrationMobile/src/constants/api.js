@@ -1,4 +1,5 @@
-export const BASE_URL = 'https://901e-180-252-172-105.ap.ngrok.io/annida'
+export const BASE_URL = 'https://7b36-103-82-15-41.ap.ngrok.io/annida'
 export const REGISTER = '/registration'
+export const MONITORING = '/monitoring/registration'
 export const RELIGION = '/religion'
 export const SCHOOL_YEAR = '/school-year'

@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://7b9d-158-140-182-97.ap.ngrok.io/annida'
+export const BASE_URL = 'https://3a56-182-0-198-146.ap.ngrok.io/annida'
 export const REGISTER = '/registration'
 export const MONITORING = '/monitoring/registration'
 export const RELIGION = '/religion'

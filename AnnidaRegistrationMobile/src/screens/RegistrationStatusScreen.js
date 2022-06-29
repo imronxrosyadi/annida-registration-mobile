@@ -607,149 +607,6 @@ const RegistrationStatusScreen = () => {
                   {errors.group && <Text style={{color: 'red'}}>This is required.</Text>}
                 </View>
 
-                <View style={{marginBottom: 14}}>
-                  <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Tanggal masuk</Text>
-                  <Controller
-                    control={control}
-                    rules={{
-                      required: true,
-                    }}
-                    render={({field: {onChange, onBlur, value}}) => (
-                      <>
-                        <TouchableOpacity
-                          onPress={() => {
-                            setMutationInModal(true)
-                          }}
-                          style={{
-                            borderWidth: 1,
-                            borderRadius: 4,
-                            paddingVertical: 10,
-                            paddingHorizontal: 10,
-                            borderColor: 'rgba(34, 41, 47, 0.4)'
-                          }}
-
-                        >
-                          <Text>{value && moment(value).format('YYYY-MM-DD')}</Text>
-                        </TouchableOpacity>
-                        <DateTimePickerModal
-                          value={value}
-                          isVisible={mutationInModal}
-                          mode="date"
-                          onConfirm={(e) => {
-                            console.log('onConfirm', e)
-                            onChange(e)
-                            setMutationInModal(false)
-                          }}
-                          onCancel={() => {
-                            setMutationInModal(false)
-                          }}
-                        />
-                      </>
-                    )}
-                    name="mutationIn"
-                  />
-                  {errors.mutationIn && <Text style={{color: 'red'}}>This is required.</Text>}
-                </View>
-
-                <View style={{marginBottom: 14}}>
-                  <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Tanggal keluar</Text>
-                  <Controller
-                    control={control}
-                    rules={{
-                      required: true,
-                    }}
-                    render={({field: {onChange, onBlur, value}}) => (
-                      <>
-                        <TouchableOpacity
-                          onPress={() => {
-                            setMutationOutModal(true)
-                          }}
-                          style={{
-                            borderWidth: 1,
-                            borderRadius: 4,
-                            paddingVertical: 20,
-                            paddingHorizontal: 10,
-                            borderColor: 'rgba(34, 41, 47, 0.4)'
-                          }}
-
-                        >
-                          <Text>{value && moment(value).format('YYYY-MM-DD')}</Text>
-                        </TouchableOpacity>
-                        <DateTimePickerModal
-                          value={value}
-                          isVisible={mutationOutModal}
-                          mode="date"
-                          onConfirm={(e) => {
-                            console.log('onConfirm', e)
-                            onChange(e)
-                            setMutationOutModal(false)
-                          }}
-                          onCancel={() => {
-                            setMutationOutModal(false)
-                          }}
-                        />
-                      </>
-                    )}
-                    name="mutationOut"
-                  />
-                  {errors.birthDate && <Text style={{color: 'red'}}>This is required.</Text>}
-                </View>
-
-
-                <View style={{marginBottom: 14}}>
-                  <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Pindah dari</Text>
-                  <Controller
-                    control={control}
-                    rules={{
-                      required: true,
-                    }}
-                    render={({field: {onChange, onBlur, value}}) => (
-                      <TextInput
-                        style={{
-                          borderWidth: 1,
-                          borderRadius: 4,
-                          paddingVertical: 6,
-                          paddingHorizontal: 10,
-                          borderColor: 'rgba(34, 41, 47, 0.4)'
-                        }}
-                        onBlur={onBlur}
-                        onChangeText={onChange}
-                        value={value}
-                      />
-                    )}
-                    name="mutationOrigin"
-                  />
-                  {errors.mutationOrigin && <Text style={{color: 'red'}}>This is required.</Text>}
-                </View>
-
-
-                <View style={{marginBottom: 14}}>
-                  <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Pindah ke</Text>
-                  <Controller
-                    control={control}
-                    rules={{
-                      required: true,
-                    }}
-                    render={({field: {onChange, onBlur, value}}) => (
-                      <TextInput
-                        style={{
-                          borderWidth: 1,
-                          borderRadius: 4,
-                          paddingVertical: 6,
-                          paddingHorizontal: 10,
-                          borderColor: 'rgba(34, 41, 47, 0.4)'
-                        }}
-                        onBlur={onBlur}
-                        onChangeText={onChange}
-                        value={value}
-                      />
-                    )}
-                    name="mutationTo"
-                  />
-                  {errors.mutationTo && <Text style={{color: 'red'}}>This is required.</Text>}
-                </View>
-
-
               </Card>
               <Card>
                 <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 29}}>Data Orang Tua</Text>
@@ -824,10 +681,11 @@ const RegistrationStatusScreen = () => {
                         onValueChange={(itemValue, itemIndex) =>
                           onChange(itemValue)
                         }>
-                        <Picker.Item label="SMA" value={1} />
-                        <Picker.Item label="S1" value={2} />
-                        <Picker.Item label="S2" value={3} />
-                        <Picker.Item label="S3" value={4} />
+                        <Picker.Item label="SMP" value={1} />
+                        <Picker.Item label="SMA" value={2} />
+                        <Picker.Item label="S1" value={3} />
+                        <Picker.Item label="S2" value={4} />
+                        <Picker.Item label="S3" value={5} />
                       </Picker>
                     )}
                     name="fatherEducation"
@@ -861,7 +719,7 @@ const RegistrationStatusScreen = () => {
                         <Picker.Item label="Tentara" value={5} />
                         <Picker.Item label="Ibu Rumah Tangga" value={6} />
                         <Picker.Item label="Sekretaris" value={7} />
-
+                        <Picker.Item label="Lainnya" value={8} />
                       </Picker>
                     )}
                     name="fatherOccupation"
@@ -971,10 +829,11 @@ const RegistrationStatusScreen = () => {
                           onChange(itemValue)
 
                         }>
-                        <Picker.Item label="SMA" value={1} />
-                        <Picker.Item label="S1" value={2} />
-                        <Picker.Item label="S2" value={3} />
-                        <Picker.Item label="S3" value={4} />
+                        <Picker.Item label="SMP" value={1} />
+                        <Picker.Item label="SMA" value={2} />
+                        <Picker.Item label="S1" value={3} />
+                        <Picker.Item label="S2" value={4} />
+                        <Picker.Item label="S3" value={5} />
                       </Picker>
                     )}
                     name="motherEducation"
@@ -1009,6 +868,7 @@ const RegistrationStatusScreen = () => {
                         <Picker.Item label="Tentara" value={5} />
                         <Picker.Item label="Ibu Rumah Tangga" value={6} />
                         <Picker.Item label="Sekretaris" value={7} />
+                        <Picker.Item label="Sekretaris" value={8} />
 
                       </Picker>
                     )}
@@ -1251,6 +1111,151 @@ const RegistrationStatusScreen = () => {
                 </View>
 
               </Card>
+
+              <Card>
+                <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 29}}>Data Mutasi</Text>
+                <View style={{marginBottom: 14}}>
+                  <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Tanggal Masuk Mutasi</Text>
+                  <Controller
+                    control={control}
+                    rules={{
+                      required: true,
+                    }}
+                    render={({field: {onChange, onBlur, value}}) => (
+                      <>
+                        <TouchableOpacity
+                          onPress={() => {
+                            setMutationInModal(true)
+                          }}
+                          style={{
+                            borderWidth: 1,
+                            borderRadius: 4,
+                            paddingVertical: 10,
+                            paddingHorizontal: 10,
+                            borderColor: 'rgba(34, 41, 47, 0.4)'
+                          }}
+
+                        >
+                          <Text>{value && moment(value).format('YYYY-MM-DD')}</Text>
+                        </TouchableOpacity>
+                        <DateTimePickerModal
+                          value={value}
+                          isVisible={mutationInModal}
+                          mode="date"
+                          onConfirm={(e) => {
+                            console.log('onConfirm', e)
+                            onChange(e)
+                            setMutationInModal(false)
+                          }}
+                          onCancel={() => {
+                            setMutationInModal(false)
+                          }}
+                        />
+                      </>
+                    )}
+                    name="mutationIn"
+                  />
+                  {errors.mutationIn && <Text style={{color: 'red'}}>This is required.</Text>}
+                </View>
+
+                <View style={{marginBottom: 14}}>
+                  <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Tanggal Keluar Mutasi</Text>
+                  <Controller
+                    control={control}
+                    rules={{
+                      required: true,
+                    }}
+                    render={({field: {onChange, onBlur, value}}) => (
+                      <>
+                        <TouchableOpacity
+                          onPress={() => {
+                            setMutationOutModal(true)
+                          }}
+                          style={{
+                            borderWidth: 1,
+                            borderRadius: 4,
+                            paddingVertical: 20,
+                            paddingHorizontal: 10,
+                            borderColor: 'rgba(34, 41, 47, 0.4)'
+                          }}
+
+                        >
+                          <Text>{value && moment(value).format('YYYY-MM-DD')}</Text>
+                        </TouchableOpacity>
+                        <DateTimePickerModal
+                          value={value}
+                          isVisible={mutationOutModal}
+                          mode="date"
+                          onConfirm={(e) => {
+                            console.log('onConfirm', e)
+                            onChange(e)
+                            setMutationOutModal(false)
+                          }}
+                          onCancel={() => {
+                            setMutationOutModal(false)
+                          }}
+                        />
+                      </>
+                    )}
+                    name="mutationOut"
+                  />
+                  {errors.birthDate && <Text style={{color: 'red'}}>This is required.</Text>}
+                </View>
+
+
+                <View style={{marginBottom: 14}}>
+                  <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Pindahan Mutasi Asal</Text>
+                  <Controller
+                    control={control}
+                    rules={{
+                      required: true,
+                    }}
+                    render={({field: {onChange, onBlur, value}}) => (
+                      <TextInput
+                        style={{
+                          borderWidth: 1,
+                          borderRadius: 4,
+                          paddingVertical: 6,
+                          paddingHorizontal: 10,
+                          borderColor: 'rgba(34, 41, 47, 0.4)'
+                        }}
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
+                      />
+                    )}
+                    name="mutationOrigin"
+                  />
+                  {errors.mutationOrigin && <Text style={{color: 'red'}}>This is required.</Text>}
+                </View>
+
+
+                <View style={{marginBottom: 14}}>
+                  <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Pindahan Mutasi Tujuan</Text>
+                  <Controller
+                    control={control}
+                    rules={{
+                      required: true,
+                    }}
+                    render={({field: {onChange, onBlur, value}}) => (
+                      <TextInput
+                        style={{
+                          borderWidth: 1,
+                          borderRadius: 4,
+                          paddingVertical: 6,
+                          paddingHorizontal: 10,
+                          borderColor: 'rgba(34, 41, 47, 0.4)'
+                        }}
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
+                      />
+                    )}
+                    name="mutationTo"
+                  />
+                  {errors.mutationTo && <Text style={{color: 'red'}}>This is required.</Text>}
+                </View>
+              </Card>
             </>
           }
 
@@ -1316,7 +1321,7 @@ const RegistrationStatusScreen = () => {
 
 
                           <Button
-                            title="Cari file akte kelahiran"
+                            title="Cari file bukti pembayaran"
                             onPress={async () => {
                               try {
                                 // const isPermission = await requestFolderPermission();
@@ -1361,27 +1366,32 @@ const RegistrationStatusScreen = () => {
                   />
                   {errors.proofOfPayment && <Text style={{color: 'red'}}>This is required.</Text>}
                 </View>
-
-
+                <Text style={{ marginBottom: 10, fontSize: 10 }}>
+                  Selamat data pendaftaran anda telah disetujui, silahkan melakukan pembayaran dengan melakukan transfer ke salah satu dari rekening Yayasan Annida :
+                </Text>
+                <Text style={{ fontSize: 10 }}>- Bank Mandiri : 123–1111–222–909</Text>
+                <Text style={{ fontSize: 10 }}>- Bank BRI : 909–0990–523–282</Text>
 
               </Card>
+
+              <View style={{marginBottom: 30}}>
+                <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+              </View>
             </>
 
           }
 
           { studentRegistration?.status === 2 &&
-            <Text>Selamat proses pendaftaran telah selesai 🎉🤞🤞</Text>
+            <View>
+              <Text>Selamat proses pendaftaran telah selesai 🎉🤞🤞</Text>
+              <Text>Selanjutnya anda akan dihubungi via telfon untuk informasi lebih lanjut, terima kasih.</Text>
+            </View>
           }
 
-
-
-          <View style={{marginBottom: 30}}>
-            <Button title="Submit" onPress={handleSubmit(onSubmit)} />
-          </View>
         </>
 
       }
-
+      
       <View style={{height: '100%', flex:1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'red'}}>
         <Text>Data tidak ditemukan :(</Text>
       </View>

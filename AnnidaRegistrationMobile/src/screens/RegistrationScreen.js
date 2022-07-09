@@ -3,6 +3,7 @@ import {Button, Platform, ScrollView, Text, TextInput, TouchableOpacity, View} f
 import {useForm, Controller} from "react-hook-form";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import {Picker} from '@react-native-picker/picker';
+// import Clipboard from '@react-native-clipboard/clipboard';
 import DocumentPicker, {
   DirectoryPickerResponse,
   DocumentPickerResponse,
@@ -116,7 +117,15 @@ const RegistrationScreen = () => {
         setSuccess({
           visible: true,
           message: (
-            <Text>Ticket Number : {result.data?.data?.ticketNumber}</Text>
+            <>
+              <Text>Ticket Number : {result.data?.data?.ticketNumber}</Text>
+              {/* <TouchableOpacity onPress={() => Clipboard.setString(result.data?.data?.ticketNumber)}>
+                <View>
+                  <Text>Ticket Number : {result.data?.data?.ticketNumber}</Text>
+                </View>
+              </TouchableOpacity> */}
+            </>
+            
           )
         })
       }
@@ -1021,8 +1030,8 @@ const RegistrationScreen = () => {
       </Card>
 
       <Card>
-        <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 29}}>Data Mutasi</Text>
-
+        <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 10}}>Data Mutasi</Text>
+        <Text style={{fontSize: 12, color: '#2c2c2c', marginBottom: 29}}>Tidak perlu diisi jika bukan siswa/i mutasi atau pindahan</Text>
         <View style={{marginBottom: 14}}>
           <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Tanggal Masuk Mutasi</Text>
           <Controller
@@ -1063,7 +1072,7 @@ const RegistrationScreen = () => {
             )}
             name="mutationIn"
           />
-          {errors.mutationIn && <Text style={{color: 'red'}}>This is required.</Text>}
+          {/* {errors.mutationIn && <Text style={{color: 'red'}}>This is required.</Text>} */}
         </View>
 
         <View style={{marginBottom: 14}}>
@@ -1106,7 +1115,7 @@ const RegistrationScreen = () => {
             )}
             name="mutationOut"
           />
-          {errors.birthDate && <Text style={{color: 'red'}}>This is required.</Text>}
+          {/* {errors.mutationOut && <Text style={{color: 'red'}}>This is required.</Text>} */}
         </View>
 
 
@@ -1133,7 +1142,7 @@ const RegistrationScreen = () => {
             )}
             name="mutationOrigin"
           />
-          {errors.mutationOrigin && <Text style={{color: 'red'}}>This is required.</Text>}
+          {/* {errors.mutationOrigin && <Text style={{color: 'red'}}>This is required.</Text>} */}
         </View>
 
 
@@ -1160,7 +1169,7 @@ const RegistrationScreen = () => {
             )}
             name="mutationTo"
           />
-          {errors.mutationTo && <Text style={{color: 'red'}}>This is required.</Text>}
+          {/* {errors.mutationTo && <Text style={{color: 'red'}}>This is required.</Text>} */}
         </View>
       </Card>
 

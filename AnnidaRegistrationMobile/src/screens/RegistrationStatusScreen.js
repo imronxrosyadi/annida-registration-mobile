@@ -1393,11 +1393,11 @@ const RegistrationStatusScreen = () => {
         </>
       }
 
-      { studentRegistration?.status >= 0 && firstMount > 0 &&
+      {/* { studentRegistration?.status >= 0 && firstMount > 0 &&
         <View style={{height: '100%', flex:1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'red'}}>
           <Text>Data tidak ditemukan :(</Text>
         </View>
-      }
+      } */}
       
     </ScrollView>
   )

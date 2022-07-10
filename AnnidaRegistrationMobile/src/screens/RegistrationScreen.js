@@ -106,8 +106,10 @@ const RegistrationScreen = () => {
     payload = {
       ...data,
       birthDate: moment(data.birthDate).format('YYYY-MM-DD'),
-      mutationOut: moment(data.mutationOut).format('YYYY-MM-DD'),
-      mutationIn: moment(data.mutationIn).format('YYYY-MM-DD'),
+      // mutationOut: moment(data.mutationOut).format('YYYY-MM-DD'),
+      mutationOut: data.mutationOut ? moment(data.mutationOut).format('YYYY-MM-DD') : null,
+      mutationIn: data.mutationIn ? moment(data.mutationIn).format('YYYY-MM-DD') : null,
+      // mutationIn: moment(data.mutationIn).format('YYYY-MM-DD'),
       religion: {id: data.religion},
       schoolYear: {id: data.schoolYear}
     }

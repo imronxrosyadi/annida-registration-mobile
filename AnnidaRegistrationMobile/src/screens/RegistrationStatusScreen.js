@@ -29,6 +29,8 @@ const RegistrationStatusScreen = () => {
   const [studentRegistration, setStudentRegistration] = useState();
   const [fetching, setFetching] = useState(false);
 
+  const [firstMount, setFirstMount] = useState(0);
+
   console.log('[studentRegistration]', studentRegistration?.status)
 
   const {control, trigger, setValue, getValues, handleSubmit, reset, formState: {errors}} = useForm({
@@ -242,6 +244,7 @@ const RegistrationStatusScreen = () => {
                 setStudentRegistration(response.data)
                 loadForm(response.data);
                 setFetching(false)
+                setFirstMount(firstMount + 1)
               } catch (e) {
                 setFetching(false)
               }
@@ -1387,15 +1390,15 @@ const RegistrationStatusScreen = () => {
               <Text>Selanjutnya anda akan dihubungi via telfon untuk informasi lebih lanjut, terima kasih.</Text>
             </View>
           }
-
         </>
+      }
 
+      { studentRegistration?.status >= 0 && firstMount > 0 &&
+        <View style={{height: '100%', flex:1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'red'}}>
+          <Text>Data tidak ditemukan :(</Text>
+        </View>
       }
       
-      <View style={{height: '100%', flex:1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'red'}}>
-        <Text>Data tidak ditemukan :(</Text>
-      </View>
-
     </ScrollView>
   )
 };

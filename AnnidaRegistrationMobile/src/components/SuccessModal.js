@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import Clipboard from '@react-native-clipboard/clipboard';
 import {Alert, Modal, StyleSheet, Text, Pressable, View, ActivityIndicator, TouchableOpacity} from "react-native";
 
 import Icon from 'react-native-vector-icons/Feather';
 
 
-const SuccessModal = ({visible, onClose, message}) => {
+const SuccessModal = ({visible, onClose, message, ticketNumber}) => {
   return (
     <Modal
       transparent={true}
@@ -19,9 +20,28 @@ const SuccessModal = ({visible, onClose, message}) => {
           </View>
           <Text style={{fontWeight: 'bold'}}>Berhasil</Text>
           { message &&
-            <View style={{marginTop: 40}}>
-              {message}
+            <View style={{flexDirection: 'row', marginTop: 40, alignItems: 'center'}}>
+              <View style={{marginTop: 0}}>
+                {message}
+              </View>
+              <TouchableOpacity
+                onPress={() => {
+                  console.log('AKU DI KLIK')
+                  Clipboard.setString(ticketNumber);
+                  Alert.alert(
+                    "Info",
+                    "Ticket Number sudah berhasil disalin",
+                    [
+                      { text: "OK", onPress: () => console.log("OK Pressed") }
+                    ]
+                  );
+                }}
+              >
+                <Icon name={'clipboard'} color={'#000'} size={14} style={{marginLeft: 4}} />
+              </TouchableOpacity>
             </View>
+
+
           }
           <TouchableOpacity
             onPress={onClose}

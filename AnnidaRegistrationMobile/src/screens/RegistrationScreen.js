@@ -28,7 +28,8 @@ const RegistrationScreen = () => {
   const [fetching, setFetching] = useState(false);
   const [success, setSuccess] = useState({
     visible: false,
-    message: null
+    message: null,
+    ticketNumber: '',
   })
 
   useEffect(() => {
@@ -64,21 +65,21 @@ const RegistrationScreen = () => {
       nickname: '',
       birthPlace: '',
       birthDate: null,
-      gender: '',
-      bloodType: '',
-      childStatus: '',
+      gender: 'L',
+      bloodType: 'A',
+      childStatus: 1,
       address: '',
       phoneNumber: '',
 
       fatherName: '',
-      fatherEducation: '',
-      fatherOccupation: '',
+      fatherEducation: 2,
+      fatherOccupation: 1,
       fatherOccupationDesc: null,
       fatherAddress: '',
 
       motherName: '',
-      motherEducation: '',
-      motherOccupation: '',
+      motherEducation: 2,
+      motherOccupation: 6,
       motherOccupationDesc: null,
       motherAddress: '',
 
@@ -89,7 +90,7 @@ const RegistrationScreen = () => {
       schoolYear: null,
       religion: null,
 
-      group: '',
+      group: 'TK A',
       birthCertificate: null,
       familyCard: null,
 
@@ -116,6 +117,7 @@ const RegistrationScreen = () => {
       if(result.data?.data?.ticketNumber) {
         setSuccess({
           visible: true,
+          ticketNumber: result.data?.data?.ticketNumber,
           message: (
             <>
               <Text>Ticket Number : {result.data?.data?.ticketNumber}</Text>
@@ -356,7 +358,6 @@ const RegistrationScreen = () => {
         <View style={{marginBottom: 14}}>
           <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Golongan Darah</Text>
           <Controller
-            defaultValue={'A'}
             control={control}
             rules={{
               required: true,
@@ -386,7 +387,6 @@ const RegistrationScreen = () => {
         <View style={{marginBottom: 14}}>
           <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Status Anak</Text>
           <Controller
-            defaultValue={1}
             control={control}
             rules={{
               required: true,
@@ -498,7 +498,6 @@ const RegistrationScreen = () => {
         <View style={{marginBottom: 14}}>
           <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Grup</Text>
           <Controller
-            defaultValue={'TK A'}
             control={control}
             rules={{
               required: true,
@@ -584,7 +583,6 @@ const RegistrationScreen = () => {
         <View style={{marginBottom: 14}}>
           <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Pendidikan Ayah</Text>
           <Controller
-            defaultValue={1}
             control={control}
             rules={{
               required: true,
@@ -615,7 +613,6 @@ const RegistrationScreen = () => {
         <View style={{marginBottom: 14}}>
           <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Pekerjaan Ayah</Text>
           <Controller
-            defaultValue={1}
             control={control}
             rules={{
               required: true,
@@ -764,7 +761,6 @@ const RegistrationScreen = () => {
         <View style={{marginBottom: 14}}>
           <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Pekerjaan Ibu</Text>
           <Controller
-            defaultValue={1}
             control={control}
             rules={{
               required: true,
@@ -1079,9 +1075,9 @@ const RegistrationScreen = () => {
           <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Tanggal Keluar Mutasi</Text>
           <Controller
             control={control}
-            rules={{
-              required: true,
-            }}
+            // rules={{
+            //   required: true,
+            // }}
             render={({field: {onChange, onBlur, value}}) => (
               <>
                 <TouchableOpacity
@@ -1123,9 +1119,9 @@ const RegistrationScreen = () => {
           <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Pindahan Mutasi Asal</Text>
           <Controller
             control={control}
-            rules={{
-              required: true,
-            }}
+            // rules={{
+            //   required: true,
+            // }}
             render={({field: {onChange, onBlur, value}}) => (
               <TextInput
                 style={{
@@ -1150,9 +1146,9 @@ const RegistrationScreen = () => {
           <Text style={{fontWeight: 'bold', color: '#2c2c2c', marginBottom: 6}}>Pindahan Mutasi Tujuan</Text>
           <Controller
             control={control}
-            rules={{
-              required: true,
-            }}
+            // rules={{
+            //   required: true,
+            // }}
             render={({field: {onChange, onBlur, value}}) => (
               <TextInput
                 style={{
@@ -1184,7 +1180,7 @@ const RegistrationScreen = () => {
           visible: false,
           message: null
         })
-      }} message={success.message} />
+      }} message={success.message} ticketNumber={success.ticketNumber}/>
 
     </ScrollView>
   )
